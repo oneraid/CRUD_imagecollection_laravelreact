@@ -1,0 +1,50 @@
+BACKEND (Laravel)
+
+composer create-project laravel/Laravel Laravel (install)
+
+php artisan make:migration create_image_table
+
+php artisan make:model Gallery -m (generate model + migration)
+
+php artisan make:controller GalleryController
+php artisan make:request GelleryStoreRequest
+
+php artisan install:api
+
+php artisan storage:link (Syulit)
+
+php artisan serve (mulai)
+------------------------------------------------------------------------------------
+
+FRONTEND (next.js)
+
+npx create-next-app@latest / npx create-next-app my-blog  (install)
+npm install axios (install axios)
+
+
+npm run dev (mulai)
+
+--------------------------------------------------------------------------------------------
+
+GIT
+
+cd /path/to/your/project (masuk folder project)
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/your-username/your-repository.git
+git push -u origin master
+
+
+-------------------------------------------------------------
+Ubah Batas Ukuran Unggahan di Laravel
+
+Open php.ini
+
+Buka file php.ini dan cari parameter berikut:
+upload_max_filesize = 2M
+post_max_size = 8M
+
+Ubah nilainya sesuai kebutuhan Anda, misalnya:
+upload_max_filesize = 10M
+post_max_size = 20M
