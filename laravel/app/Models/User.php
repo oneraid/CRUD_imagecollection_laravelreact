@@ -3,6 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\image;
+use App\Models\likeimage;
+use App\Models\follows;
+use App\Models\comments;
+use App\Models\favorites;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,6 +24,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'bio',
+        'pictures',
         'email',
         'password',
     ];
@@ -44,4 +52,31 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Relasi
+    public function images()
+    {
+        return $this->hasMany(image::class, 'user_id', 'id');
+    }
+
+    public function likeimage()
+    {
+        return $this->hasMany(likeimage::class, 'user_id', 'id');
+    }
+
+    public function follows()
+    {
+        return $this->hasMany(follows::class, 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(comments::class, 'user_id', 'id');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(favorites::class, 'user_id', 'id');
+    }
+
 }
