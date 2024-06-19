@@ -4,9 +4,11 @@ composer create-project laravel/Laravel Laravel (install)
 
 php artisan make:migration create_image_table
 
-php artisan make:model Gallery -m (generate model + migration)
+php artisan make:model image (generate model)
+php artisan make:model image -m ( -m generate model + migration)
 
 php artisan make:controller GalleryController
+
 php artisan make:request GelleryStoreRequest
 
 php artisan install:api
@@ -32,10 +34,11 @@ cd /path/to/your/project (masuk folder project)
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/your-username/your-repository.git
+git remote add origin
 git push -u origin master
 
-
+git branch {name}   		(membuat branch)
+git checkout {name branch} 	(masuk ke branch) 
 -------------------------------------------------------------
 Ubah Batas Ukuran Unggahan di Laravel
 
