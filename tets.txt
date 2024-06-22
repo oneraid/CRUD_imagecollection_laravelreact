@@ -3,6 +3,8 @@ BACKEND (Laravel)
 composer create-project laravel/Laravel Laravel (install)
 
 php artisan make:migration create_image_table
+php artisan migrate:fresh (migration ulang jika pernah migrasi)
+php artisan migrate:fresh --seed (nambah seed setelah migrasi ualng)
 
 php artisan make:model image (generate model)
 php artisan make:model image -m ( -m generate model + migration)
@@ -18,13 +20,19 @@ php artisan storage:link (Syulit)
 php artisan serve (mulai)
 ------------------------------------------------------------------------------------
 
-FRONTEND (next.js)
+FRONTEND (react vite)
 
-npx create-next-app@latest / npx create-next-app my-blog  (install)
+npm create vite@latest {nama file} --template react
+npm install
+
+npm install -D tailwindcss postcss autoprefixer (install tailwind)
+npx tailwindcss init -p                         (make config postcss and tailwind)
+
+
 npm install axios (install axios)
+npm install react-router-dom (install)
 
 
-npm run dev (mulai)
 
 --------------------------------------------------------------------------------------------
 
