@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ImageGallery from '../components/ImageGallery';
 import Navbar from '../components/Navbar';
-import UploadForm from '../components/UploadForm';
+import { FiUpload } from "react-icons/fi";
 
 const Home = () => {
     const [user, setUser] = useState(null);
@@ -14,10 +15,19 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w mx-auto">
             <Navbar user={user} />
-            <UploadForm />
+
+            <div className='max-w-4xl mx-auto'>
+
+            <Link to="/upload">
+                <button className="btn mt-10 gap-3">
+                    <FiUpload />
+                    Upload New Image
+                </button>
+            </Link>
             <ImageGallery />
+            </div>
         </div>
     );
 };

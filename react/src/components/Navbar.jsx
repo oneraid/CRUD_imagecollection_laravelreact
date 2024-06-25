@@ -1,41 +1,66 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Navbar = () => {
-  const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState('');
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          console.error('No token found');
-          return;
-        }
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                console.error('No token found');
+                return;
+                }
 
-        const response = await axios.get('http://127.0.0.1:8000/api/user', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+                const response = await axios.get('http://127.0.0.1:8000/api/user', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+                });
 
-        console.log('Response data:', response.data); // Log response data
+                console.log('Response data:', response.data);
 
-        // Access the user's name directly from the response
-        const userName = response.data.name;
-        setUserName(userName);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
+                // Access the user's name directly from the response
+                const userName = response.data.name;
+                setUserName(userName);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        
 
     fetchUserData();
   }, []);
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
+
+      await axios.get('http://127.0.0.1:8000/api/logout', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      localStorage.removeItem('token');
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="">OneGallery</a>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
@@ -60,7 +85,7 @@ const Navbar = () => {
               </a>
             </li>
             <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
+            <li><a onClick={handleLogout}>Logout</a></li>
           </ul>
         </div>
       </div>
