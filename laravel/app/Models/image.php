@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\comments;
-use App\Models\favorites;
-use App\Models\likeimage;
+use App\Models\Comments;
+use App\Models\Favorites;
+use App\Models\Likeimage;
 use App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class image extends Model
+class Image extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -30,16 +30,16 @@ class image extends Model
 
     public function likeimage()
     {
-        return $this->hasMany(likeimage::class, 'image_id', 'id');
+        return $this->hasMany(Likeimage::class, 'image_id', 'id');
     }
 
     public function favorites()
     {
-        return $this->hasMany(favorites::class, 'image_id', 'id');
+        return $this->hasMany(Favorites::class, 'image_id', 'id');
     }
 
     public function comments()
     {
-        return $this->hasMany(comments::class, 'image_id', 'id');
+        return $this->hasMany(Comments::class, 'image_id', 'id');
     }
 }

@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .main-container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    width: 250px; /* Sesuaikan ukuran Sidebar sesuai kebutuhan */
+    background-color: #f0f0f0; /* Warna latar belakang Sidebar */
+    padding: 20px;
+    border-right: 1px solid #ccc; /* Garis pemisah antara Sidebar dan konten utama */
+  }
+  
+  .content-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
