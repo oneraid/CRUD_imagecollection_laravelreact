@@ -62,7 +62,7 @@ const MyCollection = () => {
         <div className="grid md:grid-cols-3 justify-center gap-4 mt-10">
           {images.map(image => (
             <div key={image.id} className="card card-compact w-96 bg-base-100 shadow-xl">
-              <figure><img src={`http://127.0.0.1:8000/images/${image.url}`} alt={image.title} /></figure>
+              <figure><img src={`${image.url}`} alt={image.title} /></figure>
               <div className="card-body">
                 <h2 className="card-title">{image.title}</h2>
                 <p>{image.description}</p>

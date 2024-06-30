@@ -30,7 +30,7 @@ const App = () => {
           <Sidebar />
         )}
 
-        <div className="content-container flex-1">
+        <div className=" flex-1">
         {!noNavbarPaths.includes(location.pathname) && <Navbar />}
           <Routes>
             <Route path="/" element={<Landingpage />} />

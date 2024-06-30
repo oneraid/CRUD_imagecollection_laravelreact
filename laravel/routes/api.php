@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
 
@@ -16,19 +15,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/upload', [ImageController::class, 'upload']);
     Route::get('/images', [ImageController::class, 'index']);
-
-    Route::get('/myimages', [ImageController::class, 'myImages']);
-    Route::delete('/images/{id}', [ImageController::class, 'destroy']);
+    Route::get('/images/{id}', [ImageController::class, 'show']);
     Route::put('/images/{id}', [ImageController::class, 'update']);
+    Route::delete('/images/{id}', [ImageController::class, 'destroy']);
+    Route::get('/myimages', [ImageController::class, 'myImages']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users', [AuthController::class, 'index']);
-
-
-
-
 
 
 // Route::get('/explore', [AuthController::class, 'index']);

@@ -98,11 +98,11 @@ const Signup = () => {
                     </div>
                     )}
                         <div>
-                            <label className="input input-bordered flex items-center gap-2">
+                            <label className="flex items-center gap-2">
                                 <input
                                     type="text"
-                                    className="grow"
-                                    placeholder="Username"
+                                    className="grow input input-bordered "
+                                    placeholder="Name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     required
@@ -110,10 +110,10 @@ const Signup = () => {
                             </label>
                         </div>
                         <div>
-                            <label className="input input-bordered flex items-center gap-2">
+                            <label className="flex items-center gap-2">
                                 <input
                                     type="text"
-                                    className="grow"
+                                    className="grow input input-bordered "
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -122,11 +122,11 @@ const Signup = () => {
                             </label>
                         </div>
                         <div>
-                            <label className="input input-bordered flex items-center gap-2">
+                            <label className="flex items-center gap-2">
                                 <input
                                     type="password"
                                     placeholder="Password"
-                                    className="grow"
+                                    className="grow input input-bordered "
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
@@ -134,11 +134,11 @@ const Signup = () => {
                             </label>
                         </div>
                         <div>
-                            <label className="input input-bordered flex items-center gap-2">
+                            <label className="flex items-center gap-2">
                                 <input
                                     type="password"
                                     placeholder="Confirm Password"
-                                    className="grow"
+                                    className="grow input input-bordered "
                                     value={passwordConfirmation}
                                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                                     required

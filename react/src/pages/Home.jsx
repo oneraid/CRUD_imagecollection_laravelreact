@@ -14,7 +14,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto ml-5.5"> {/* Add margin-left to make space for sidebar */}
             <div className="mt-10 flex justify-center items-center gap-3">
                 <Link to="/upload">
                     <button className="btn flex items-center gap-1">

@@ -54,10 +54,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-2xl">
+    <div className="navbar bg-base-300 shadow-2xl">
       <div className="flex-1">
         {/* <a className="btn btn-ghost text-xl" onClick={() => navigate('/')}>OneGallery</a> */}
-        <div className="mx-2 flex-1 px-5">OneGallery</div>
+        <div className="mx-2 flex-1 px-5 ml-20">OneGallery</div>
       </div>
       <div className="flex-none">
         <div className="form-control">

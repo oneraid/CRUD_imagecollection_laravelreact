@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ImageCard from './ImageCard';
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
@@ -28,20 +29,23 @@ const ImageGallery = () => {
   }, []);
 
   return (
-    <div className="grid md:grid-cols-3 justify-center gap-4 mt-10">
-      {images.map((image) => (
-        <div key={image.id} className="card card-compact w-96 bg-base-100 shadow-xl">
-          <figure><img src={`http://127.0.0.1:8000/images/${image.url}`} alt={image.title} /></figure>
-          <div className="card-body">
-            <h2 className="card-title">{image.title}</h2>
-            <p>{image.description}</p>
-            <p>Upload by: {image.user ? image.user.name : 'Unknown'}</p>
-            <span>Created on: {new Date(image.created_at).toLocaleDateString()}</span>
-          </div>
-        </div>
-      ))}
+    <div className="container mx-auto">
+      <h1 className="text-center text-white font-bold text-3xl mb-14 mt-5 sm:mt-0">
+        Image Gallery
+      </h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-8">
+        {images.map((image) => (
+          <ImageCard
+            key={image.id}
+            imgSrc={image.url}
+            title={image.title}
+            description={image.description}
+          />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default ImageGallery;

@@ -19,8 +19,8 @@ const styles = {
     },
     previewImage: {
         objectFit: 'cover',
-        width: '100%',
-        height: '100%',
+        maxWidth: '100%',
+        maxHeight: '100%',
     },
 };
 
@@ -100,7 +100,7 @@ const UploadForm = () => {
                             <label htmlFor="dropzone-file" style={styles.dropzone} className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                     {preview ? (
-                                        <img src={preview} alt="Preview" className={styles.previewImage} />
+                                        <img src={preview} alt="Preview" style={styles.previewImage} />
                                     ) : (
                                         <>
                                             <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
