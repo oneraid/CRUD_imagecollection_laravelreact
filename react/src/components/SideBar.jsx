@@ -5,9 +5,10 @@ import axios from "axios";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineUser} from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { TbLogout2 } from "react-icons/tb";
+import { LuBookmark } from "react-icons/lu";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -37,11 +38,11 @@ const SideBar = () => {
   const menus = [
     { name: "Explore", link: "/home", icon: MdOutlineDashboard },
     { name: "My Collections", link: "/my-collection", icon: FiFolder },
-    { name: "Saved", link: "/", icon: AiOutlineHeart },
-    { name: "messages", link: "/", icon: FiMessageSquare },
+    { name: "Saved", link: "/favorites", icon: LuBookmark },
+    { name: "Messages", link: "/", icon: FiMessageSquare },
     { name: "Setting", link: "/", icon: RiSettings4Line },
     { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "user", link: "/", icon: AiOutlineUser },
+    { name: "User", link: "/", icon: AiOutlineUser },
     { name: "Logout", link: "#", icon: TbLogout2, onClick: handleLogout },
   ];
 

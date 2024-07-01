@@ -14,8 +14,11 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto ml-5.5"> {/* Add margin-left to make space for sidebar */}
-            <div className="mt-10 flex justify-center items-center gap-3">
+        <div className="max-w-7xl mx-auto ml-5.5 ">
+            <h1 className="text-center text-white font-bold text-3xl mb-14 mt-20 sm:mt-20">
+                Image Gallery
+            </h1>
+            <div className="mt-10 flex justify-center items-center gap-3 mb-14">
                 <Link to="/upload">
                     <button className="btn flex items-center gap-1">
                         <FiUpload />

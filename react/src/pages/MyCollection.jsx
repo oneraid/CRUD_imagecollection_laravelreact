@@ -57,7 +57,7 @@ const MyCollection = () => {
 
   return (
     <div >
-      <div className='max-w-7xl mx-auto'>
+      <div className='max-w-7xl mx-auto mt-20'>
         <h1 className="text-2xl font-bold mt-10">My Collection</h1>
         <div className="grid md:grid-cols-3 justify-center gap-4 mt-10">
           {images.map(image => (

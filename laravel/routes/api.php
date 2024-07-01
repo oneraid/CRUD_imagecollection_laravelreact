@@ -4,6 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeImageController;
+use App\Http\Controllers\FavoritesController;
+
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/users', [AuthController::class, 'index']);
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
@@ -19,16 +27,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/images/{id}', [ImageController::class, 'update']);
     Route::delete('/images/{id}', [ImageController::class, 'destroy']);
     Route::get('/myimages', [ImageController::class, 'myImages']);
+
+    Route::post('/images/{id}/like', [LikeImageController::class, 'like']);
+    Route::delete('/images/{id}/unlike', [LikeImageController::class, 'unlike']);
+    Route::get('/images/{id}/likesCount', [LikeImageController::class, 'likesCount']);
+    Route::get('/images/{id}/isLiked', [LikeImageController::class, 'isLiked']);
+
+    Route::post('/images/{id}/bookmark', [FavoritesController::class, 'bookmark']);
+    Route::delete('/images/{id}/unbookmark', [FavoritesController::class, 'unbookmark']);
+    Route::get('/images/{id}/isBookmarked', [FavoritesController::class, 'isBookmarked']);
+    Route::get('/images/{id}/bookmarksCount', [FavoritesController::class, 'bookmarksCount']);
+    Route::get('/myBookmarks', [FavoritesController::class, 'myBookmarks']);
+
 });
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/users', [AuthController::class, 'index']);
 
-
-// Route::get('/explore', [AuthController::class, 'index']);
-// Route::get('/pin', [AuthController::class, 'index']);
-// Route::get('/pinned', [AuthController::class, 'index']);
-// Route::get('/explore-detail', [AuthController::class, 'index']);
-// Route::get('/follows', [AuthController::class, 'index']);
-// Route::get('/mypin', [AuthController::class, 'index']);

@@ -7,8 +7,11 @@ import UploadForm from './pages/UploadForm';
 import MyCollection from './pages/MyCollection';
 import EditImage from './pages/EditImage';
 import Landingpage from './pages/Landingpage';
+import ImageDetail from './pages/ImageDetail';
+import Favorites from './pages/Favorites';
 import Navbar from './components/Navbar';
 import Sidebar from './components/SideBar';
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -40,6 +43,8 @@ const App = () => {
             <Route path="/upload" element={isAuthenticated ? <UploadForm /> : <Navigate to="/login" />} />
             <Route path="/my-collection" element={isAuthenticated ? <MyCollection /> : <Navigate to="/login" />} />
             <Route path="/edit-image/:id" element={isAuthenticated ? <EditImage /> : <Navigate to="/login" />} />
+            <Route path="/image/:id" element={isAuthenticated ? <ImageDetail /> : <Navigate to="/login" />} />
+            <Route path="/favorites" element={isAuthenticated ? <Favorites /> : <Navigate to="/login" />} />
           </Routes>
         </div>
       </div>
