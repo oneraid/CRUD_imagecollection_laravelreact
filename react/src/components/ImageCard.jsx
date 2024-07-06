@@ -17,62 +17,24 @@ const ImageCard = ({ imgSrc, title, description, id }) => {
       return;
     }
 
-    const fetchLikesCount = async () => {
+    const fetchImageStats = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/images/${id}/likesCount`, {
+        const response = await axios.get(`http://127.0.0.1:8000/api/images/${id}/stats`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setLikesCount(response.data.likesCount);
+        const { likesCount, bookmarksCount, userLiked, isBookmarked } = response.data;
+        setLikesCount(likesCount);
+        setBookmarksCount(bookmarksCount);
+        setLiked(userLiked);
+        setBookmarked(isBookmarked);
       } catch (error) {
-        console.error('Error fetching likes count:', error);
+        console.error('Error fetching image stats:', error);
       }
     };
 
-    const fetchBookmarksCount = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/images/${id}/bookmarksCount`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setBookmarksCount(response.data.bookmarksCount);
-      } catch (error) {
-        console.error('Error fetching bookmarks count:', error);
-      }
-    };
-
-    const checkIfLiked = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/images/${id}/isLiked`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setLiked(response.data.userLiked);
-      } catch (error) {
-        console.error('Error checking if liked:', error);
-      }
-    };
-
-    const checkIfBookmarked = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/images/${id}/isBookmarked`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setBookmarked(response.data.isBookmarked);
-      } catch (error) {
-        console.error('Error checking if bookmarked:', error);
-      }
-    };
-
-    fetchLikesCount();
-    fetchBookmarksCount();
-    checkIfLiked();
-    checkIfBookmarked();
+    fetchImageStats();
   }, [id]);
 
   const handleLike = async () => {

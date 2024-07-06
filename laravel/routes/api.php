@@ -6,7 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeImageController;
 use App\Http\Controllers\FavoritesController;
-
+use App\Http\Controllers\ImageCountController;
+use App\Http\Controllers\ProfileUpdateController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,8 +19,10 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::get('/profile', [AuthController::class, 'profile']);
+    Route::get('/profile', [AuthController::class, 'getProfile']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::put('/profile/update/', [ProfileUpdateController::class, 'update']);
 
     Route::post('/upload', [ImageController::class, 'upload']);
     Route::get('/images', [ImageController::class, 'index']);
@@ -38,6 +41,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/images/{id}/isBookmarked', [FavoritesController::class, 'isBookmarked']);
     Route::get('/images/{id}/bookmarksCount', [FavoritesController::class, 'bookmarksCount']);
     Route::get('/myBookmarks', [FavoritesController::class, 'myBookmarks']);
+
+    Route::get('/images/{id}/stats', [ImageCountController::class, 'stats']);
 
 });
 

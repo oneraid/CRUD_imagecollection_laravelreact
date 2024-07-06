@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller
 {
 
@@ -105,4 +104,15 @@ class AuthController extends Controller
             'message' => 'Logout successful',
         ], 200);
     }
+
+    public function getProfile() {
+        $user = Auth::user();
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile user',
+            'data' => $user,
+        ], 200);
+    }
+
+
 }

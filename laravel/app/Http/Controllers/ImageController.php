@@ -136,12 +136,28 @@ class ImageController extends Controller
     }
 
     public function show($id)
-    {
-        try {
-            $image = Image::findOrFail($id);
-            return response()->json($image);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Image not found'], 404);
-        }
+{
+    try {
+        $image = Image::findOrFail($id);
+        $user = $image->user()->first();
+
+        $uploadedBy = $user ? $user->name : 'Unknown';
+
+        // Tambahkan informasi pengguna dan waktu unggah ke dalam array respons
+        $imageData = [
+            'id' => $image->id,
+            'title' => $image->title,
+            'description' => $image->description,
+            'url' => $image->url,
+            'uploaded_by' => $uploadedBy,
+            'created_at' => $image->created_at->toDateTimeString(), // Ubah format waktu jika perlu
+        ];
+
+        return response()->json($imageData);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Image not found'], 404);
     }
+}
+
+
 }

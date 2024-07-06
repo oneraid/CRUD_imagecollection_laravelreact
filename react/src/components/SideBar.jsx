@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
+// import { RiSettings4Line } from "react-icons/ri";
 import { AiOutlineUser} from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { TbLogout2 } from "react-icons/tb";
@@ -39,10 +39,10 @@ const SideBar = () => {
     { name: "Explore", link: "/home", icon: MdOutlineDashboard },
     { name: "My Collections", link: "/my-collection", icon: FiFolder },
     { name: "Saved", link: "/favorites", icon: LuBookmark },
-    { name: "Messages", link: "/", icon: FiMessageSquare },
-    { name: "Setting", link: "/", icon: RiSettings4Line },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "User", link: "/", icon: AiOutlineUser },
+    { name: "AI Image Generator", link: "/", icon: FiMessageSquare },
+    // { name: "Setting", link: "/", icon: RiSettings4Line },
+    // { name: "Cart", link: "/", icon: FiShoppingCart },
+    { name: "User", link: "/profile", icon: AiOutlineUser },
     { name: "Logout", link: "#", icon: TbLogout2, onClick: handleLogout },
   ];
 
@@ -117,7 +117,7 @@ const SideBar = () => {
                 </h2>
               </Link>
             )}
-            {menu.name === "Cart" && <hr className="my-2 border-gray-600" />}
+            {menu.name === "AI Image Generator" && <hr className="my-2 border-gray-600" />}
           </React.Fragment>
         ))}
       </div>

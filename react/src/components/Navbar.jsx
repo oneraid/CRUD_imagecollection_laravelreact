@@ -1,30 +1,32 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
+  const [userPicture, setUserPicture] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         if (!token) {
-          console.error('No token found');
+          console.error("No token found");
           return;
         }
 
-        const response = await axios.get('http://127.0.0.1:8000/api/user', {
+        const response = await axios.get("http://127.0.0.1:8000/api/user", {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
-        const userName = response.data.name;
-        setUserName(userName);
+        const { name, pictures } = response.data;
+        setUserName(name);
+        setUserPicture(pictures);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
@@ -33,23 +35,27 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        console.error('No token found');
+        console.error("No token found");
         return;
       }
 
-      await axios.post('http://127.0.0.1:8000/api/logout', {}, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      await axios.post(
+        "http://127.0.0.1:8000/api/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      navigate('/login');
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      navigate("/login");
     } catch (error) {
-      console.error('Error logging out:', error);
+      console.error("Error logging out:", error);
     }
   };
 
@@ -64,18 +70,33 @@ const Navbar = () => {
             <a>{userName ? userName : "Loading..."}</a>
           </h1>
         </div>
-        <div className="dropdown dropdown-end ">
-          <div tabIndex={0} role="button" className="mx-5 btn btn-ghost btn-circle avatar">
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="mx-5 btn btn-ghost btn-circle avatar"
+          >
             <div className="w-10 rounded-full">
               <img
-                alt="User avatar"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                src={
+                  userPicture
+                    ? `http://127.0.0.1:8000/photos_profile/${userPicture}`
+                    : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+                alt="Profile"
               />
             </div>
           </div>
-          <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-            <li><a onClick={() => navigate('/my-collection')}>My Collections</a></li>
-            <li><a onClick={handleLogout}>Logout</a></li>
+          <ul
+            tabIndex={0}
+            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a onClick={() => navigate("/my-collection")}>My Collections</a>
+            </li>
+            <li>
+              <a onClick={handleLogout}>Logout</a>
+            </li>
           </ul>
         </div>
       </div>

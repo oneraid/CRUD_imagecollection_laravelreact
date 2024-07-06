@@ -96,7 +96,7 @@ const EditImage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto mt-20">
       <h1 className="text-2xl font-bold mt-10">Edit Image</h1>
       <div className="hero-content flex-col lg:flex-row">
         <div className="w-full lg:w-1/2">
