@@ -79,19 +79,19 @@ class FavoritesController extends Controller
     }
 
     public function myBookmarks()
-{
-    $user = Auth::user();
-    if (!$user) {
-        return response()->json(['error' => 'Unauthorized'], 401);
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        // Memuat relasi `image` dan `user`
+        $bookmarkedImages = Favorites::where('user_id', $user->id)
+            ->with('image', 'image.user') // Load the image and its user relation
+            ->get();
+
+        return response()->json($bookmarkedImages);
     }
-
-    $bookmarkedImages = Favorites::where('user_id', $user->id)
-        ->with('image') // Load the image relation
-        ->get()
-        ->pluck('image'); // Extract only the image details
-
-    return response()->json($bookmarkedImages);
-}
 
 }
 
