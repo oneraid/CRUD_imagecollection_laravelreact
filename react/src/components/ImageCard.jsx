@@ -148,10 +148,10 @@ const ImageCard = ({ imgSrc, title, description, id, user }) => {
           </div>
         </div>
         <h4
-          className="text-sm font-bold text-white"
+          className="text-sm font-bold text-white mb-2"
           style={{
-            textShadow: "1px 1px 2px black", // Mengatur bayangan teks
-            textStroke: "10px black", // Untuk browser yang mendukung properti text-stroke
+            textShadow: "1px 1px 2px black",
+            textStroke: "10px black",
           }}
         >
           {user.name}

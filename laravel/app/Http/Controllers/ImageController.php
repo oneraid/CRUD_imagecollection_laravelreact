@@ -138,10 +138,7 @@ class ImageController extends Controller
     public function show($id)
 {
     try {
-        $image = Image::findOrFail($id);
-        $user = $image->user()->first();
-
-        $uploadedBy = $user ? $user->name : 'Unknown';
+        $image = Image::with('user')->findOrFail($id);
 
         // Tambahkan informasi pengguna dan waktu unggah ke dalam array respons
         $imageData = [
@@ -149,7 +146,16 @@ class ImageController extends Controller
             'title' => $image->title,
             'description' => $image->description,
             'url' => $image->url,
-            'uploaded_by' => $uploadedBy,
+            'uploaded_by' => $image->user ? $image->user->name : 'Unknown',
+            'user' => [
+                'id' => $image->user->id,
+                'name' => $image->user->name,
+                'bio' => $image->user->bio,
+                'pictures' => $image->user->pictures,
+                'email' => $image->user->email,
+                'created_at' => $image->user->created_at->toDateTimeString(),
+                'updated_at' => $image->user->updated_at->toDateTimeString(),
+            ],
             'created_at' => $image->created_at->toDateTimeString(), // Ubah format waktu jika perlu
         ];
 
