@@ -1,5 +1,4 @@
-
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const ProfileImage = ({ profile }) => {
   return (
@@ -7,7 +6,10 @@ const ProfileImage = ({ profile }) => {
       <div className="relative">
         <img
           alt="Profile"
-          src={profile.pictures || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
+          src={
+            profile.pictures ||
+            "https://api.dicebear.com/9.x/avataaars/svg?seed=default"
+          }
           className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
           style={{ maxWidth: "150px" }}
         />
@@ -17,10 +19,10 @@ const ProfileImage = ({ profile }) => {
 };
 
 ProfileImage.propTypes = {
-    profile: PropTypes.shape({
-      pictures: PropTypes.string,
-      // Add more properties as needed
-    }).isRequired,
-  };
+  profile: PropTypes.shape({
+    pictures: PropTypes.string,
+    // Add more properties as needed
+  }).isRequired,
+};
 
 export default ProfileImage;

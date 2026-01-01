@@ -18,6 +18,10 @@ php artisan install:api
 php artisan storage:link (Syulit)
 
 php artisan serve (mulai)
+
+php artisan route:cache
+php artisan cache:clear 
+
 ------------------------------------------------------------------------------------
 
 FRONTEND (react vite)

@@ -4,34 +4,41 @@ import axios from "axios";
 
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
-// import { RiSettings4Line } from "react-icons/ri";
-import { AiOutlineUser} from "react-icons/ai";
+import { RiSettings4Line } from "react-icons/ri";
+import { AiOutlineUser } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { TbLogout2 } from "react-icons/tb";
 import { LuBookmark } from "react-icons/lu";
+import { CiImageOff } from "react-icons/ci";
+import { MdOutlineImageNotSupported } from "react-icons/md";
+import { MdAutoAwesome } from "react-icons/md";
 
 const SideBar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        console.error('No token found');
+        console.error("No token found");
         return;
       }
 
-      await axios.post('http://127.0.0.1:8000/api/logout', {}, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      await axios.post(
+        "http://127.0.0.1:8000/api/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      navigate('/login');
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      navigate("/login");
     } catch (error) {
-      console.error('Error logging out:', error);
+      console.error("Error logging out:", error);
     }
   };
 
@@ -39,8 +46,12 @@ const SideBar = () => {
     { name: "Explore", link: "/home", icon: MdOutlineDashboard },
     { name: "My Collections", link: "/my-collection", icon: FiFolder },
     { name: "Saved", link: "/favorites", icon: LuBookmark },
-    { name: "AI Image Generator", link: "/", icon: FiMessageSquare },
-    // { name: "Setting", link: "/", icon: RiSettings4Line },
+    {
+      name: "Remove Background",
+      link: "/RemoveBG",
+      icon: MdOutlineImageNotSupported,
+    },
+    { name: "AI Image Generator", link: "/", icon: MdAutoAwesome },
     // { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "User", link: "/profile", icon: AiOutlineUser },
     { name: "Logout", link: "#", icon: TbLogout2, onClick: handleLogout },
@@ -117,7 +128,9 @@ const SideBar = () => {
                 </h2>
               </Link>
             )}
-            {menu.name === "AI Image Generator" && <hr className="my-2 border-gray-600" />}
+            {menu.name === "AI Image Generator" && (
+              <hr className="my-2 border-gray-600" />
+            )}
           </React.Fragment>
         ))}
       </div>

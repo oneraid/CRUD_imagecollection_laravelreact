@@ -10,6 +10,8 @@ import Landingpage from "./pages/Landingpage";
 import ImageDetail from "./pages/ImageDetail";
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
+import RemoveBG from "./pages/RemoveBG";
+
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/SideBar";
 
@@ -78,6 +80,12 @@ const App = () => {
             <Route
               path="/profile"
               element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/removebg"
+              element={
+                isAuthenticated ? <RemoveBG /> : <Navigate to="/login" />
+              }
             />
           </Routes>
         </div>

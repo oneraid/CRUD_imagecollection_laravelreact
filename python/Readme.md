@@ -1,0 +1,3 @@
+Pillow
+easygui
+rembg[gpu]

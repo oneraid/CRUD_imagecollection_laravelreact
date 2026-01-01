@@ -131,7 +131,7 @@ const Profile = () => {
                         src={
                           profile.pictures
                             ? `http://127.0.0.1:8000/photos_profile/${profile.pictures}`
-                            : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                            : "https://api.dicebear.com/9.x/avataaars/svg?seed=default"
                         }
                         className="w-full h-full object-cover"
                       />

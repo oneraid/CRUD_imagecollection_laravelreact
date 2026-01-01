@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { FaHeart, FaBookmark, FaDownload } from "react-icons/fa";
+import CommentList from "../components/CommentList"; // Import komponen CommentList
 
 const ImageDetail = () => {
   const { id } = useParams();
@@ -221,6 +222,9 @@ const ImageDetail = () => {
         <p className="text-sm mb-4">
           Created on: {new Date(image.created_at).toLocaleDateString()}
         </p>
+
+        {/* Tambahkan komponen CommentList di sini */}
+        <CommentList imageId={id} />
       </div>
     </div>
   );
